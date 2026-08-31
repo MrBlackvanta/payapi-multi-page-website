@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import { DM_Serif_Display, Public_Sans } from "next/font/google";
+import localFont from "next/font/local";
 
+import { SiteFooter, SiteHeader } from "@/components/layout";
 import { siteUrl } from "@/data";
 import { pageMetadata } from "@/lib/metadata";
 
@@ -17,6 +19,16 @@ const dmSerifDisplay = DM_Serif_Display({
   subsets: ["latin"],
   weight: "400",
   display: "swap",
+});
+
+const robotoMono = localFont({
+  src: "../assets/fonts/roboto-mono-subset.woff2",
+  variable: "--font-roboto-mono",
+  weight: "400",
+  style: "normal",
+  display: "swap",
+  preload: false,
+  fallback: ["ui-monospace", "monospace"],
 });
 
 const homeTitle = "PayAPI | Payment APIs for developers";
@@ -48,10 +60,20 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${publicSans.variable} ${dmSerifDisplay.variable} antialiased`}
+      className={`${publicSans.variable} ${dmSerifDisplay.variable} ${robotoMono.variable} antialiased`}
     >
       <body className="flex min-h-dvh flex-col font-sans">
-        <main className="flex-1">{children}</main>
+        <a
+          href="#main"
+          className="sr-only rounded-full bg-accent px-6 py-3 text-ui font-bold text-ink-inverse focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50"
+        >
+          Skip to content
+        </a>
+        <SiteHeader />
+        <main id="main" className="flex-1">
+          {children}
+        </main>
+        <SiteFooter />
       </body>
     </html>
   );

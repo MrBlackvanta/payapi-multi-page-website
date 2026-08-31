@@ -4,6 +4,7 @@
 @theme inline {
   --font-sans: var(--font-public-sans);
   --font-serif: var(--font-dm-serif-display);
+  --font-mono: var(--font-roboto-mono);
 }
 
 @theme {
@@ -12,7 +13,9 @@
   --color-surface-dark: #1b262f;
 
   --color-ink: #36536b;
+  --color-ink-soft: #527695;
   --color-ink-muted: #5e7181;
+  --color-code-bar: #2e3f4d;
   --color-ink-inverse: #fbfcfe;
   --color-ink-inverse-muted: #b8bcc0;
 
@@ -20,6 +23,7 @@
   --color-accent-hover: #ce3c74;
 
   --color-field-line: #7a8ea1;
+  --color-checkbox-line: #768fa5;
   --color-danger: #dd0f12;
 
   --text-display: 4.5rem;
@@ -87,7 +91,75 @@
     cursor: pointer;
   }
   :focus-visible {
-    outline: 2px solid currentColor;
+    outline: 2px solid var(--color-ink);
     outline-offset: 2px;
+  }
+}
+
+@utility v-scroll-lock {
+  @apply overflow-hidden md:overflow-y-scroll;
+}
+
+@property --stat {
+  syntax: "<integer>";
+  initial-value: 0;
+  inherits: false;
+}
+
+@keyframes v-rise {
+  from {
+    translate: 0 1.5rem;
+  }
+}
+
+@keyframes v-drift {
+  from {
+    translate: 0 -3rem;
+  }
+  to {
+    translate: 0 3rem;
+  }
+}
+
+@keyframes v-count {
+  from {
+    --stat: 0;
+  }
+}
+
+@utility v-rise {
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+      animation: v-rise linear both;
+      animation-timeline: view();
+      animation-range: entry calc(var(--rise-order, 0) * 70px) entry
+        calc(260px + var(--rise-order, 0) * 70px);
+    }
+  }
+}
+
+@utility v-drift {
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+      animation: v-drift linear both;
+      animation-timeline: view();
+    }
+  }
+}
+
+@utility v-stat {
+  --stat: var(--stat-to);
+  counter-reset: stat var(--stat);
+
+  &::before {
+    content: counter(stat);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+      animation: v-count linear both;
+      animation-timeline: view();
+      animation-range: entry 0px entry 300px;
+    }
   }
 }

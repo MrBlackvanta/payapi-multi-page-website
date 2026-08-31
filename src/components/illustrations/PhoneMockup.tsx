@@ -3,9 +3,9 @@ import type { SVGProps } from "react";
 export default function PhoneMockup(props: SVGProps<SVGSVGElement>) {
   return (
     <svg
-      viewBox="0 0 419 660"
-      width="419"
-      height="660"
+      viewBox="53 55 263 500"
+      width="263"
+      height="500"
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
       {...props}

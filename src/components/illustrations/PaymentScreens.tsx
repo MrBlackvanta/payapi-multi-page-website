@@ -3,9 +3,9 @@ import type { SVGProps } from "react";
 export default function PaymentScreens(props: SVGProps<SVGSVGElement>) {
   return (
     <svg
-      viewBox="0 0 722 660"
-      width="722"
-      height="660"
+      viewBox="53 55 566 501"
+      width="566"
+      height="501"
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
       {...props}
