@@ -77,6 +77,13 @@ swallowed.
   the browser is right and the Figma box is stale.
 - The tablet page labels the third About block "Our Business", duplicating the second. Desktop
   and mobile both say "The Culture", which is what ships.
+- The tablet contact aside reads "Join thousands of innovators"; mobile and desktop both read
+  "Join the thousands of innovators", which is what ships. Where the three frames disagree the
+  majority wins, the same rule as the About label above.
+- The contact form's Submit button sits 2px right of the form column in the desktop and tablet
+  frames — x=167 where every field in the same column starts at x=165. It ships flush with the
+  fields, since a 2px indent on one control is a stray nudge rather than a rule. Mobile already
+  agrees at x=24.
 - The mobile team photograph is a different picture in the supplied assets. It was replaced so
   that all three breakpoints show the same people.
 - Social links point at `#`; the design specifies no destinations. The demo, access and submit
