@@ -6,9 +6,82 @@
   --font-serif: var(--font-dm-serif-display);
 }
 
+@theme {
+  --color-page: #edf3f8;
+  --color-surface: #fbfcfe;
+  --color-surface-dark: #1b262f;
+
+  --color-ink: #36536b;
+  --color-ink-muted: #5e7181;
+  --color-ink-inverse: #fbfcfe;
+  --color-ink-inverse-muted: #b8bcc0;
+
+  --color-accent: #ba4270;
+  --color-accent-hover: #ce3c74;
+
+  --color-field-line: #7a8ea1;
+  --color-danger: #dd0f12;
+
+  --text-display: 4.5rem;
+  --text-display--line-height: 1;
+  --text-display--letter-spacing: -0.0077em;
+
+  --text-h1: 3.5rem;
+  --text-h1--line-height: 1;
+  --text-h1--letter-spacing: -0.0077em;
+
+  --text-h2: 3rem;
+  --text-h2--line-height: 3.5rem;
+  --text-h2--letter-spacing: -0.0077em;
+
+  --text-h3: 2.25rem;
+  --text-h3--line-height: 1;
+  --text-h3--letter-spacing: -0.0077em;
+
+  --text-h4: 2rem;
+  --text-h4--line-height: 2.5rem;
+  --text-h4--letter-spacing: -0.0077em;
+
+  --text-h5: 1.5rem;
+  --text-h5--line-height: 2rem;
+  --text-h5--letter-spacing: -0.0077em;
+
+  --text-lead: 1.125rem;
+  --text-lead--line-height: 1.5625rem;
+  --text-lead--letter-spacing: -0.0077em;
+
+  --text-body: 1rem;
+  --text-body--line-height: 1.75rem;
+
+  --text-body-sm: 0.9375rem;
+  --text-body-sm--line-height: 1.75rem;
+
+  --text-ui: 0.9375rem;
+  --text-ui--line-height: 1.5625rem;
+  --text-ui--letter-spacing: -0.0077em;
+
+  --text-label: 0.8125rem;
+  --text-label--line-height: 1.125rem;
+  --text-label--letter-spacing: -0.0077em;
+
+  --text-note: 0.6875rem;
+  --text-note--line-height: 1.125rem;
+  --text-note--letter-spacing: -0.0077em;
+
+  --radius-card: 0.3125rem;
+  --radius-panel: 0.5rem;
+
+  --shadow-card: 10px 10px 25px -10px rgb(54 83 107 / 0.25);
+  --shadow-showcase: 25px 25px 80px rgb(54 83 107 / 0.3);
+}
+
 @layer base {
   html {
     overflow-y: scroll;
+  }
+  body {
+    background-color: var(--color-page);
+    color: var(--color-ink);
   }
   button:not(:disabled) {
     cursor: pointer;
