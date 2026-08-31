@@ -14,7 +14,7 @@
 
   --color-ink: #36536b;
   --color-ink-soft: #527695;
-  --color-ink-muted: #5e7181;
+  --color-ink-muted: #51626f;
   --color-code-bar: #2e3f4d;
   --color-ink-inverse: #fbfcfe;
   --color-ink-inverse-muted: #b8bcc0;
@@ -97,7 +97,14 @@
 }
 
 @utility v-scroll-lock {
-  @apply overflow-hidden md:overflow-y-scroll;
+  overflow: hidden;
+  padding-right: var(--v-scrollbar, 0px);
+
+  @media (width >= 48rem) {
+    overflow: visible;
+    overflow-y: scroll;
+    padding-right: 0;
+  }
 }
 
 @property --stat {
@@ -156,10 +163,8 @@
   }
 
   @media (prefers-reduced-motion: no-preference) {
-    @supports (animation-timeline: view()) {
-      animation: v-count linear both;
-      animation-timeline: view();
-      animation-range: entry 0px entry 300px;
+    [data-count-up] & {
+      animation: v-count 1.6s cubic-bezier(0.2, 0.75, 0.3, 1) both;
     }
   }
 }

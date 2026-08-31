@@ -24,6 +24,10 @@ export default function MobileMenu({ className = "" }: { className?: string }) {
     if (!open) return;
 
     const root = document.documentElement;
+    root.style.setProperty(
+      "--v-scrollbar",
+      `${window.innerWidth - root.clientWidth}px`,
+    );
     root.classList.add("v-scroll-lock");
     const cancelFocus = focusOncePainted(() => panelRef.current);
 
@@ -67,6 +71,7 @@ export default function MobileMenu({ className = "" }: { className?: string }) {
 
     return () => {
       root.classList.remove("v-scroll-lock");
+      root.style.removeProperty("--v-scrollbar");
       cancelFocus();
       wide.removeEventListener("change", closeWhenWide);
       document.removeEventListener("keydown", onKeyDown);

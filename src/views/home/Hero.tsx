@@ -27,7 +27,10 @@ export default function Hero() {
 
           <p className="mt-6 text-ui leading-4.5 tracking-normal text-ink-muted md:mt-4 lg:pl-6.75">
             Have any questions?{" "}
-            <Link href="/contact" className="hover:underline">
+            <Link
+              href="/contact"
+              className="font-bold text-ink underline transition-colors hover:text-accent"
+            >
               Contact Us
             </Link>
           </p>

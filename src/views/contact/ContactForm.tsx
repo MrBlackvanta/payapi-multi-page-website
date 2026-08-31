@@ -41,7 +41,9 @@ function collectErrors(values: Values): Errors {
 }
 
 const fieldBase =
-  "text-ui block w-full border-b bg-transparent pb-4 pl-5 text-ink placeholder:text-ink-muted focus:border-ink focus:outline-none";
+  "text-ui block w-full border-b bg-transparent pb-4 pl-5 text-ink focus:border-ink focus:outline-none";
+const fieldRest = "border-field-line placeholder:text-ink-muted";
+const fieldInvalid = "border-danger placeholder:text-danger";
 
 export default function ContactForm({
   className = "",
@@ -73,8 +75,12 @@ export default function ContactForm({
     setSent((count) => count + 1);
   }
 
+  function update(name: keyof Values, value: string | boolean) {
+    setValues((current) => ({ ...current, [name]: value }));
+  }
+
   function fieldClass(name: keyof Values) {
-    return `${fieldBase} ${errors[name] ? "border-danger" : "border-field-line"}`;
+    return `${fieldBase} ${errors[name] ? fieldInvalid : fieldRest}`;
   }
 
   function errorFor(name: keyof Values) {
@@ -110,12 +116,7 @@ export default function ContactForm({
             autoComplete={autoComplete}
             placeholder={label}
             value={values[name]}
-            onChange={(event) =>
-              setValues((current) => ({
-                ...current,
-                [name]: event.currentTarget.value,
-              }))
-            }
+            onChange={(event) => update(name, event.currentTarget.value)}
             aria-invalid={Boolean(errors[name])}
             aria-describedby={errors[name] ? errorId(name) : undefined}
             className={fieldClass(name)}
@@ -134,12 +135,7 @@ export default function ContactForm({
           rows={1}
           placeholder="Message"
           value={values.message}
-          onChange={(event) =>
-            setValues((current) => ({
-              ...current,
-              message: event.currentTarget.value,
-            }))
-          }
+          onChange={(event) => update("message", event.currentTarget.value)}
           aria-invalid={Boolean(errors.message)}
           aria-describedby={errors.message ? errorId("message") : undefined}
           className={`${fieldClass("message")} min-h-22.25 resize-y`}
@@ -154,20 +150,18 @@ export default function ContactForm({
             name="updates"
             type="checkbox"
             checked={values.updates}
-            onChange={(event) =>
-              setValues((current) => ({
-                ...current,
-                updates: event.currentTarget.checked,
-              }))
-            }
-            className="peer size-6 appearance-none border border-checkbox-line bg-ink/25 checked:border-accent checked:bg-accent"
+            onChange={(event) => update("updates", event.currentTarget.checked)}
+            className="peer size-6 cursor-pointer appearance-none border border-checkbox-line bg-ink/25 checked:border-accent checked:bg-accent"
           />
           <CheckIcon
             aria-hidden="true"
             className="pointer-events-none absolute top-2 left-1.5 w-2.75 stroke-3 text-white opacity-0 peer-checked:opacity-100"
           />
         </span>
-        <label htmlFor={fieldId("updates")} className="text-ui text-ink">
+        <label
+          htmlFor={fieldId("updates")}
+          className="cursor-pointer text-ui text-ink"
+        >
           Stay up-to-date with company announcements and updates to our API
         </label>
       </div>

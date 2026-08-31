@@ -1,10 +1,13 @@
 import { PaymentScreens } from "@/components/illustrations";
 import { Container } from "@/components/layout";
+import { Disc } from "@/components/ui";
 
 export default function SimpleUiUx() {
   return (
-    <section>
-      <Container className="flex v-rise flex-col items-center pt-20 md:pt-25 lg:flex-row lg:items-center lg:justify-between lg:pt-37.5">
+    <section className="relative">
+      <Disc className="hidden v-drift lg:top-2.5 lg:-right-97.5 lg:left-auto lg:block" />
+
+      <Container className="relative z-10 flex v-rise flex-col items-center pt-20 md:pt-25 lg:flex-row lg:items-center lg:justify-between lg:pt-37.5">
         <PaymentScreens
           aria-hidden="true"
           className="order-1 h-auto w-full max-w-82 shrink-0 overflow-visible md:w-90.5 md:max-w-none lg:order-2 lg:w-141.5"

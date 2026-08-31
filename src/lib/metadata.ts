@@ -7,7 +7,7 @@ const images = [
     url: "/opengraph-image.jpg",
     width: 1200,
     height: 630,
-    alt: "The PayAPI card, headlined “Payment APIs for developers”.",
+    alt: "Three teammates working on a laptop, beside the headline “Payment APIs for developers”.",
   },
 ];
 

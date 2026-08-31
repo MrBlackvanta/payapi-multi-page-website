@@ -10,7 +10,7 @@ import NavLinks from "./NavLinks";
 export default function SiteFooter() {
   return (
     <footer className="relative overflow-clip bg-surface-dark">
-      <Disc className="top-44.25 -left-50.5 v-drift md:hidden" />
+      <Disc className="top-44.25 -left-50.5 v-drift md:-top-34 md:-right-97.5 md:left-auto" />
 
       <Container className="relative z-10 flex flex-col items-center gap-10 pt-10 pb-13.75 md:h-25 md:flex-row md:gap-0 md:py-0">
         <Link
