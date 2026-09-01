@@ -37,6 +37,7 @@ export default function EmailCapture({
     setAttempts((count) => count + 1);
 
     if (emailError(email)) {
+      setSent(0);
       form.querySelector<HTMLInputElement>("input")?.focus();
       return;
     }
@@ -68,7 +69,7 @@ export default function EmailCapture({
           aria-invalid={Boolean(error)}
           aria-describedby={error ? errorId : undefined}
           className={`h-12 w-full rounded-full bg-surface px-6.75 text-ui font-bold tracking-normal text-ink shadow-card outline-offset-0 placeholder:text-ink-muted md:pr-45 ${
-            error ? "outline-2 outline-danger" : ""
+            error ? "outline-2 outline-danger focus-visible:outline-ink" : ""
           }`}
         />
         <Button

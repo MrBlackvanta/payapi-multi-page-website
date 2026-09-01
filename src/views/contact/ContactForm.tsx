@@ -66,6 +66,7 @@ export default function ContactForm({
 
     const [firstInvalid] = Object.keys(collectErrors(values));
     if (firstInvalid) {
+      setSent(0);
       form.querySelector<HTMLElement>(`[name="${firstInvalid}"]`)?.focus();
       return;
     }
