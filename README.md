@@ -9,7 +9,7 @@ A solution to the [PayAPI multi-page website challenge on Frontend Mentor](https
 
 ## Built with
 
-- Next.js (App Router, static export)
+- Next.js
 - React
 - TypeScript
 - Tailwind CSS
